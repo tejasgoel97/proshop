@@ -1,7 +1,7 @@
 import { Alert } from "react-bootstrap";
 
-const RedAlert = () => {
-  return <Alert variant="danger">This is a alert—check it out!</Alert>;
+const RedAlert = ({ children }) => {
+  return <Alert variant="danger">{children ? children : <div>"This is a alert—check it out!"</div>}</Alert>;
 };
 
 export default RedAlert;

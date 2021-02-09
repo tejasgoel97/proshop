@@ -3,14 +3,13 @@ import chalk from "chalk";
 
 const connectDb = async () => {
   try {
-    console.log(chalk.green.inverse(process.env.MONGO_URI));
     const response = await mongoose.connect(process.env.MONGO_URI, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
+    }, () => console.log("LLLLl"));
 
-    console.log(chalk.greenBright("CONNECTED>>>>"));
+    console.log("CONNECTED>>>>");
   } catch (error) {
     console.log(error);
   }

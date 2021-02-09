@@ -7,11 +7,13 @@ import {
   productDetailReducer,
 } from "../reducers/productReducer";
 import cartReducer from "../reducers/cartReducers";
+import { userReducer } from "../reducers/userReducers";
 
 const reducer = combineReducers({
   productList: productlistReducer,
   productDetail: productDetailReducer,
   cart: cartReducer,
+  User: userReducer
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
+import bodyParser from 'body-parser'
 
 import products from "./data/products.js";
 import productRouter from "./routes/productRoute.js";
+import userRouter from './routes/userRoute.js'
 import middleWareRouter from "./middlewares/errorMiddlewares.js";
 
 const app = express();
@@ -11,11 +13,14 @@ dotenv.config();
 
 connectDb();
 
-app.get("/", (req, res, next) => {
+app.use(bodyParser())
+
+app.use("/", (req, res, next) => {
   console.log("passed basic route");
   next();
 });
 app.use("/api/products", productRouter);
+app.use('/api/users/', userRouter)
 
 app.use(middleWareRouter);
 
